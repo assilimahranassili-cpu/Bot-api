@@ -8,15 +8,15 @@ async function runBot() {
 
   const page = await browser.newPage();
 
-  // 1️⃣ الدخول للموقع
-  const url = "https://faucetpay.io/";  // ضع هنا الرابط الذي تريد
+  // ضع هنا الرابط الذي تريد
+  const url = "https://example.com";
   await page.goto(url, { waitUntil: "networkidle2" });
 
-  // 2️⃣ أخذ Screenshot كـ Base64 (بدون حفظ)
+  // Screenshot كـ Base64 بدون حفظ
   const screenshotBase64 = await page.screenshot({ encoding: "base64", fullPage: true });
   console.log("📸 Screenshot (Base64) جاهزة للعرض");
 
-  // 3️⃣ استخراج الحقول النصية (input)
+  // استخراج الحقول النصية (input)
   const inputs = await page.$$eval("input", elements =>
     elements.map(el => ({
       type: el.type,
@@ -30,7 +30,7 @@ async function runBot() {
     console.log(`${i + 1}. type: ${input.type}, name/id: ${input.name}, placeholder: ${input.placeholder}`);
   });
 
-  // 4️⃣ استخراج الأزرار
+  // استخراج الأزرار
   const buttons = await page.$$eval("button", elements =>
     elements.map(el => ({
       text: el.innerText || "(بدون نص)",
