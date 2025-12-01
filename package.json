@@ -5,8 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "node node_modules/puppeteer/install.js"
+    "start": "node index.js"
   },
   "author": "Your Name",
   "license": "MIT",
